@@ -1,7 +1,7 @@
-# WMZDailog - 功能最多样式最多的弹窗，支持普通/微信底部/提示/加载框/日期/地区/日历/选择/编辑/分享/菜单/吐司/自定义弹窗等,支持多种动画,链式编程调用，所有属性均可定制
+# BLDialog - 功能最多样式最多的弹窗，支持普通/微信底部/提示/加载框/日期/地区/日历/选择/编辑/分享/菜单/吐司/自定义弹窗等,支持多种动画,链式编程调用，所有属性均可定制
 
  [![Platform](https://img.shields.io/badge/platform-iOS-red.svg)](https://developer.apple.com/iphone/index.action) 
- [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/WMZDialog.svg)](https://img.shields.io/cocoapods/v/WMZDialog.svg)
+ [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/BLDialog.svg)](https://img.shields.io/cocoapods/v/BLDialog.svg)
  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://mit-license.org) 
  
 特性
@@ -246,11 +246,11 @@ typedef enum : NSUInteger{
 
 ### 默认模式
 
-      Dialog().wTypeSet(DialogTypeNornal).wStart();
+      BLDialogCreate().wTypeSet(DialogTypeNornal).wStart();
     
 ### 多选模式
 
-      Dialog().wTypeSet(type)
+      BLDialogCreate().wTypeSet(type)
                .wEventOKFinishSet(^(id anyID, id otherData) {
                     NSLog(@"%@",anyID);
                 })
@@ -263,7 +263,7 @@ typedef enum : NSUInteger{
 
 ### 自定义弹窗(优酷) 更多自定义弹窗看demo  
     	
-     Dialog()
+     BLDialogCreate()
      .wTypeSet(DialogTypeMyView)
      .wMyDiaLogViewSet(^UIView *(UIView *mainView) {
          mainView.layer.masksToBounds = YES;
@@ -274,16 +274,16 @@ typedef enum : NSUInteger{
      })
      .wStart();
     
-### 自定义弹窗传入实现WMZCustomPrototol协议的UIView
+### 自定义弹窗传入实现BLCustomPrototol协议的UIView
         
-     Dialog()
+     BLDialogCreate()
      .wOpenKeyBoardSet(YES)
      .wCustomView(DemoTwoView.new)
      .wStart();
     
 ### 传入param
 
-     WMZDialogParam *param = WMZDialogParam.new;
+     BLDialogParam *param = BLDialogParam.new;
      param.wType = DialogTypeShare;
      param.wEventMenuClick = ^(id anyID, NSInteger section, NSInteger row) {
                 
@@ -294,11 +294,11 @@ typedef enum : NSUInteger{
      ];
      param.wRowCount = 1;
      param.wColumnCount = 4;
-     Dialog().wStartParam(param);
+     BLDialogCreate().wStartParam(param);
 
 ### 暗黑模式
 
-    Dialog()
+    BLDialogCreate()
     .wTypeSet(DialogTypeSheet)
     .wDataSet(@[@"男",@"女",@"保密"])
     .wDarkMode(nil)
@@ -320,7 +320,7 @@ typedef enum : NSUInteger{
     4 默认弹窗wStart是在window层 如果要设置不同层可以用wStartView(传入父view)
     
      (3)///设置全局默认配置 主题色字体等 
-     [WMZDialogManage settingGlobalConfig:^(WMZDialogParam * _Nullable param) {
+     [BLDialogManage settingGlobalConfig:^(BLDialogParam * _Nullable param) {
          param.wOKColor = UIColor.redColor;
      }];
 
@@ -334,20 +334,20 @@ typedef enum : NSUInteger{
 
 ### CocoaPods  
 1. 将 cocoapods 更新至最新版本.
-2. 在 Podfile 中添加    pod 'WMZDialog'
+2. 在 Podfile 中添加    pod 'BLDialog'
 3. 执行 `pod install` 或 `pod update`。
-4. 导入 #import "WMZDialog.h"。
+4. 导入 `#import "BLDialog.h"`。
 
 
 ### 手动安装
 
-1. 下载 WMZDialog 文件夹内的所有内容。
-2. 将 WMZDialog 内的源文件添加(拖放)到你的工程。
-3. 导入 #import "WMZDialog.h"
+1. 下载 BLDialog 文件夹内的所有内容。
+2. 将 BLDialog 内的源文件添加(拖放)到你的工程。
+3. 导入 `#import "BLDialog.h"`。
 
 系统要求
 ==============
-该库最低支持 `iOS 9.0` 和 `Xcode 9.0`。
+该库最低支持 `iOS 12.0`。
 
 
 个人主页
@@ -370,7 +370,7 @@ typedef enum : NSUInteger{
 (1)新增通用wAutoClose属性 响应库内的自动关闭 default YES 如果设为NO则需要自己调用手动关闭的类方法 closeWithshowView 
 (2) writeType新增 wRegular属性  正则校验规则 default nil  例如 可传入 @{@"reguler":@"^1+[3578]+\\d{9}",@"reguletTip":@"请输入正确的手机号"}
 - 20210501 v1.3.0 新增DialogTypeToast类型 修复若干问题（消除警告 建议更新至此）
-- 20210412 v1.2.6 新增wLevel属性可管理多个弹窗的层级, 加入WMZDialogManage管理类
+- 20210412 v1.2.6 新增wLevel属性可管理多个弹窗的层级, 加入BLDialogManage管理类
 - 20210202 v1.2.5 优化LoadingType 
 - 20210113 v1.2.4 优化静态库xib问题 LoadingType优化 可作为项目的loading框使用
 - 20210107 v1.2.3 优化选择弹窗 解决pod里没有xib文件导致报错的问题
