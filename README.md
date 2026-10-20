@@ -3,6 +3,19 @@
  [![Platform](https://img.shields.io/badge/platform-iOS-red.svg)](https://developer.apple.com/iphone/index.action) 
  [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/BLDialog.svg)](https://img.shields.io/cocoapods/v/BLDialog.svg)
  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://mit-license.org) 
+
+> 本项目基于 **WMZDialog** 发展，保留原作者 WMZ 的版权及 MIT 许可证信息。BLDialog 是独立维护的后续版本，公开类名和创建入口已统一为 `BLDialog` 与 `BLDialogCreate()`，不再提供旧 `WMZDialog` API。
+
+## BLDialog 维护更新
+
+- 统一项目、源码、资源、Xcode Scheme、测试 target 和 CocoaPods 组件名为 `BLDialog`，并更新仓库地址及安装说明。
+- 调整弹窗关闭流程，使重复关闭只触发一次关闭事件，并完成各次关闭请求的回调；手动关闭会取消待执行的自动关闭任务。
+- 改进弹窗管理器对宿主视图、重复 tag 和层级排序的处理，弹窗关闭或移除时清理管理记录。
+- 加强地区菜单数据更新、日期边界和文本替换等输入边界处理。
+- 改进弹窗视图的无障碍模态标记、安全区布局、键盘偏移及横竖屏适配。
+- 增加关闭生命周期、弹窗管理、菜单数据和日期范围相关的 XCTest 覆盖。
+
+当前最低支持 iOS 12.0；CocoaPods spec 位于 `BLDialog.podspec`。本次维护未升级 Masonry 等依赖。
  
 特性
 ==============
